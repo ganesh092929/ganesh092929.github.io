@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+
+  <style>
+    #channel-data, #video-container {
+      display: none;
+    }
+  </style>
+
+  <title>YouTube Channel Data</title>
+</head>
+
+<body>
+  <nav class="black">
+    <div class="nav-wrapper">
+      <div class="container">
+        <a href="#!" class="brand-logo">Hidden Gems in Youtube</a>
+      </div>
+    </div>
+  </nav>
+  <br>
+  <section>
+    <div class="container">
+      <div id="content">
+        <div class="row">
+          <form id="channel-form">
+            <div class="center-align">
+              <input type="text" class="center-align" style="width:50%" value = "UCH4BNI0-FOK2dMXoFtViWHw" placeholder="Enter Channel Details" id="channel-input">
+                <p>
+                  <label>
+                    <input name="group1" type="radio" value = "ID" id="radioBtn-ChID" checked/>
+                    <span>Channel ID</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input name="group1" type="radio" value = "Username" id="radioBtn-ChUsername" />
+                    <span>Channel Username</span>
+                  </label>
+                </p>
+              <input type="submit" value="Get Channel Data" class="btn grey">
+          </form>
+          </div>
+        </div>
+
+        <div class="row" id="channel-data"></div>
+
+        <div class="row" id="video-container">
+
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
+  <script src="main.js"></script>
+</body>
+
+</html>
