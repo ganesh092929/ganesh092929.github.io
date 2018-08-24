@@ -30,31 +30,23 @@
       <div id="content">
         <div class="row">
           <form id="channel-form">
-            <div class="center-align">
-              <input type="text" class="center-align" style="width:50%" value = "UCH4BNI0-FOK2dMXoFtViWHw" placeholder="Enter Channel Details" id="channel-input">
-                <p>
-                  <label>
-                    <input name="group1" type="radio" value = "ID" id="radioBtn-ChID" checked/>
-                    <span>Channel ID</span>
-                  </label>
-                </p>
-                <p>
-                  <label>
-                    <input name="group1" type="radio" value = "Username" id="radioBtn-ChUsername" />
-                    <span>Channel Username</span>
-                  </label>
-                </p>
-              <input type="submit" value="Get Channel Data" class="btn grey">
+              <input type="text" style="float:left; width:90%" placeholder="Paste a Youtube Channel URL here" id="channel-input">
+              <input type="submit" style = "float:right; width: 8%" value="Go" class="btn grey">
           </form>
-          </div>
         </div>
 
+        <div class="row" id="percent-slider">
+        <form action="#">
+          <span class="range-field">
+            <input id = "slider-input" type="range" min="0" max="20" value="5"/>
+            <p style="text-align:center; color: #A9A9A9; font-size: 12px; margin-top: 0px; font-style: italic;">Drag the slider to display only videos above a fixed percentage => Likes/Views x 100%</p>
+          </span>
+        </form>
+        <br>
         <div class="row" id="channel-data"></div>
 
-        <div class="row" id="video-container">
-
-
         </div>
+        <div class="row" id="video-container"></div>
       </div>
     </div>
   </section>
