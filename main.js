@@ -17,7 +17,6 @@ channelForm.addEventListener('submit', e => {
 
   if (inputURL.indexOf("channel")>0) {
     ChID = inputURL.substring(inputURL.indexOf("channel")+8,inputURL.length);
-    console.log(ChID);
     getChannelData();
     channelData.style.display = "block";
     videoContainer.style.display = "block";
@@ -33,7 +32,7 @@ channelForm.addEventListener('submit', e => {
     ChUsername = inputURL.substring(inputURL.indexOf("user")+5,inputURL.length);
     getChannelData();
     channelData.style.display = "block";
-    videoContainer.style.display = "block";
+    videoContainer.style.display = "inline";
 
     var URL_ChSearch = 'https://www.googleapis.com/youtube/v3/channels';
     var options_ChSearch = {
@@ -98,7 +97,12 @@ var currCnt = 0;
 function StoreVideoID(){
   for (var j = 0; j <= CopyData.items.length-1; j++){
       //console.log (currCnt + ") " + CopyData.items[indvCnt].id.videoId);
-      API_videoStats(currCnt, CopyData.items[indvCnt].id.videoId);
+      try{
+        API_videoStats(currCnt, CopyData.items[indvCnt].id.videoId);
+        //console.log(CopyData.items[indvCnt].id.videoId);
+      } catch(err) {
+        console.log(err.message);
+      }
       currCnt += 1
       indvCnt += 1
       if (indvCnt == 50){indvCnt = 0;}
@@ -116,12 +120,14 @@ function API_videoStats(currCnt, videoID){
   $.getJSON(URL_VideoDetails,options_VideoDetails,getVideoStats)
   function getVideoStats(data){
     CopyData = data;
-    //Console.log(CopyData);
+    thumbnailURL = CopyData.items[0].snippet.thumbnails.high.url
     videoTitle = CopyData.items[0].snippet.title;
     videoLikes = CopyData.items[0].statistics.likeCount;
     videoViews = CopyData.items[0].statistics.viewCount;
-    PercentLikes = (videoLikes/videoViews*100).toFixed(2);
-    output = `<p><a href="https:\\/\\/www.youtube.com/watch?v=${videoID}" target="_blank">${videoTitle}</a> ${PercentLikes}%</p>`;
+    PercentLikes = (videoLikes/videoViews*100).toFixed(1);
+
+    output = `<div class="col s4 videoResult"><section class="vidThumbnail"><a href="https:\\/\\/www.youtube.com/watch?v=${videoID}"><img class = "videoImg" src = "${thumbnailURL}"</img></a></section>
+              <span class = "vidDetails"><p class="PercentStats">${PercentLikes}%</p><p class="vidDesc"> ${videoTitle.substr(0,60)}</p></span></div>`;
     if (parseFloat(PercentLikes) > parseFloat(inputPercentage)) { channelData.innerHTML += output; }
   }
 }
