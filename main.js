@@ -6,7 +6,7 @@ const channelData = document.getElementById('channel-data');
 const videoContainer = document.getElementById('video-container');
 
 var ChID, ChUsername,CopyData, inputURL, inputPercentage;
-var APIkey = 'AIzaSyBt7BBMDq9yrrhwBDN3exkk0t9hY0waK9A';
+var APIkey = 'AIzaSyBdZp37XT6Lwpm2powM085ygXTl8onTRd4';
 
 channelForm.addEventListener('submit', e => {
   ChID = null;
